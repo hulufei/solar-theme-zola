@@ -4,6 +4,10 @@ Port of [Solar theme for Hugo](https://github.com/bake/solar-theme-hugo) to Zola
 
 ![screenshot](./screenshot.png)
 
+## Requirements
+
+Unless this [PR](https://github.com/getzola/zola/pull/1026) get merged and published, otherwise you should clone the [code](https://github.com/hulufei/zola/tree/next) and run zola locally.
+
 ## Installation
 
 First download this theme to your `themes` directory:
