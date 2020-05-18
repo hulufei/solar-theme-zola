@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <!-- viewport-fit=cover is to support iPhone X rounded corners and notch in landscape-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+    <!-- CSS -->
+    {% if config.highlight_theme == "solarized-dark" %}
+    <link rel="stylesheet" href="{{ get_url(path="colors-dark.css", trailing_slash=false) }}">
+    {% endif %}
+    {% if config.highlight_theme == "solarized-light" %}
+    <link rel="stylesheet" href="{{ get_url(path="colors-light.css", trailing_slash=false) }}">
+    {% endif %}
+
+    {% if config.generate_rss %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
+    {% endif %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+  </head>
+  <body>
+    <header id="header">
+      <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+      <p>{{ config.description }}</p>
+    </header>
+    <div id="page">
+      <div id="sidebar">
+        {% block sidebar %}
+          {% if config.extra.site_menus %}
+          <nav>
+            <ul class="nav">
+              {% block sidebar_nav %}
+                {% for link in config.extra.site_menus %}
+                  <li>
+                    <a href="{{ link.url }}"><span>{{ link.name }}</span></a>
+                  </li>
+                {% endfor %}
+              {% endblock sidebar_nav %}
+            </ul>
+          </nav>
+          {% endif %}
+        {% endblock sidebar %}
+      </div>
+      <div id="content">
+        {% block content %}
+          {% if paginator.pages %}
+            {% set pages = paginator.pages %}
+          {% else %}
+            {% set pages = section.pages %}
+          {% endif %}
+          {% for page in pages | reverse %}
+            <article class="post">
+              <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
+              {% if page.summary %}
+                <div class="post-content">
+                  {{ page.summary | safe }}
+                  <nav class="readmore"><a itemprop="url" href="{{ page.permalink | safe }}">Read More&nbsp;&raquo;</a></nav>
+                </div>
+              {% endif %}
+              <p class="meta">Posted on <span class="postdate">{{ page.date | date(format="%Y-%m-%d") }}</span></p>
+            </article>
+          {% endfor %}
+          {% block pagination %}
+            {% if paginator.previous or paginator.next %}
+              <nav class="pagination" role="pagination">
+                {% if paginator.previous %}
+                  <a class="newer-posts" href="{{ paginator.previous }}"><span aria-hidden="true">&larr;</span> Newer Posts</a>
+                {% endif %}
+                <span class="page-number">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+                {% if paginator.next %}
+                  <a class="older-posts" href="{{ paginator.next }}">Older Posts <span aria-hidden="true">&rarr;</span></a>
+                {% endif %}
+              </nav>
+            {% endif %}
+          {% endblock pagination %}
+        {% endblock content %}
+      </div>
+      <footer id="footer">
+        <p class="copyright">
+          {% block copyright %}
+            Powered by <a href="https://www.getzola.org/">Zola</a> and the
+            <a href="https://github.com/hulufei/solar-theme-zola">Solar</a>-theme.
+          {% endblock copyright %}
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

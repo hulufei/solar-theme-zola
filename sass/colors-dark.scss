@@ -1,0 +1,72 @@
+@import 'layout';
+
+html,
+body {
+	background-color: #002a35;
+	color: #839496;
+}
+
+::selection {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+a,
+a:visited,
+a:active,
+a code {
+	color: #2aa198;
+	border-color: #073642;
+}
+
+a:hover {
+	background-color: #073642;
+	border-color: #073642;
+	color: #2aa198;
+}
+
+hr {
+	border-color: #073642;
+}
+
+h1,
+h2,
+h3 {
+	color: #cb4b16;
+}
+
+h1 a,
+h1 a:visited,
+h1 a:active {
+	color: #cb4b16;
+}
+
+h1 a:hover {
+	background-color: #073642;
+	border-color: #073642;
+	color: #cb4b16;
+}
+
+article h1 a.anchor {
+	color: #2aa198;
+}
+
+blockquote {
+	border-color: #cb4b16;
+}
+
+#sidebar a:hover {
+	background-color: transparent;
+}
+
+#sidebar a:hover span {
+	color: #2aa198;
+	background-color: #073642;
+}
+
+#footer {
+	border-color: #073642;
+}
+
+.hljs {
+	background: none;
+}

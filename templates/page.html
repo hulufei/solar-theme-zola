@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+
+{% block content %}
+<article class="post">
+  <h1><a href="{{ page.permalink }}">{{ page.title }}</a></h1>
+
+  <div class="post-content">{{ page.content | safe }}</div>
+
+  <p class="meta">Posted on <span class="postdate">{{ page.date | date(format="%Y-%m-%d") }}</span></p>
+</article>
+{% endblock content %}
