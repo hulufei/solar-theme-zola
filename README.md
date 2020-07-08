@@ -4,17 +4,13 @@ Port of [Solar theme for Hugo](https://github.com/bake/solar-theme-hugo) to Zola
 
 ![screenshot](./screenshot.png)
 
-## Requirements
-
-Unless this [PR](https://github.com/getzola/zola/pull/1026) get merged and published, otherwise you should clone the [code](https://github.com/hulufei/zola/tree/next) and run zola locally.
-
 ## Installation
 
 First download this theme to your `themes` directory:
 
 ```bash
 $ cd themes
-$ git clone https://github.com/getzola/hyde.git
+$ git clone https://github.com/hulufei/solar-theme-zola.git
 ```
 and then enable it in your `config.toml`:
 
@@ -22,11 +18,18 @@ and then enable it in your `config.toml`:
 theme = "solar-theme-zola"
 ```
 
+Add `title` and `description`:
+
+```toml
+title = "Your Blog Title"
+description = "Your blog description"
+```
+
 ## Options
 
 ### Color schemes
 
-Set color scheme to (Solarized) `dark` (default) or (Solarized) `light` with `highlight_theme` option:
+Set color scheme to (Solarized) `dark` or (Solarized) `light` with `highlight_theme` option:
 
 ```toml
 highlight_theme = "solarized-dark"
