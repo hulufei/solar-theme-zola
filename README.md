@@ -41,7 +41,7 @@ Set a field in `extra` with a key of `site_menus`:
 
 ```toml
 site_menus = [
-  { url = "https://github/hulufei/solar-theme-zola", name = "Repository" },
+  { url = "https://github/hulufei.com/solar-theme-zola", name = "Repository" },
   { url = "rss.xml", name = "RSS" },
 ]
 ```
